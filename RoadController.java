@@ -28,6 +28,7 @@ public class RoadController // Class
     {
         for(Integer i = 0; i < 10; i++)
         {
+            //Variable car
             Car car = Camera.getNextCar();
             System.out.println(car);
             System.out.println("Скорость: " + Camera.getCarSpeed(car) + " км/ч");
@@ -37,7 +38,7 @@ public class RoadController // Class
              */
             if(car.isSpecial()) {
                 openWay();
-                continue; //
+                continue;
             }
 
             /**
@@ -78,18 +79,18 @@ public class RoadController // Class
                 //Грузовой автомобиль
                 if(weight > passengerCarMaxWeight)
                 {
-                    price = passengerCarPrice;
+                    price = cargoCarPrice;
                     if(car.hasVehicle()) {
                         price = price + vehicleAdditionalPrice;
                     }
                 }
-                //Легковой автомобиль
-                else {
-                    price = cargoCarPrice;
-                }
             }
+            //Легковой автомобиль
             else {
                 price = passengerCarPrice;
+                if(car.hasVehicle()) {
+                    price = price + vehicleAdditionalPrice;
+                }
             }
 
             /**
